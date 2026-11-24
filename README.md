@@ -4,7 +4,7 @@
 
 基于 SAM 2.1 Tiny 的本地图像与短视频交互分割。支持正负点、框和文字定位，视频关键帧修正，透明前景与二值掩膜导出，以及卡通和线稿风格化。
 
-[打开 GitHub Pages 在线演示](https://kinosakuraxuan.github.io/SAM-Studio/) · [下载项目训练权重](https://github.com/kinosakuraxuan/SAM-Studio/releases/tag/v1.0.0) · [实验记录](./experiments)
+[打开 GitHub Pages 在线演示](https://kinosakuraxuan.github.io/SAM-Studio/) · [实验记录](./experiments)
 
 在线页面使用预计算样例。上传本地媒体、重新分割或运行 Grounding DINO 和风格模型需要启动下面的 Python 应用。
 
@@ -29,7 +29,7 @@ curl.exe --fail --location 'https://dl.fbaipublicfiles.com/segment_anything_2/09
 
 - **文字提示**：运行 `.\.runtime\Scripts\python.exe -m tools.fetch_dino` 安装 Grounding DINO Tiny，完成后重启应用。
 - **神经风格化**：运行 `.\.runtime\Scripts\python.exe -m tools.fetch_styles`。
-- **训练权重**：从 [v1.0.0 Releases](https://github.com/kinosakuraxuan/SAM-Studio/releases/tag/v1.0.0) 下载 `sam-studio-checkpoints.zip`，在项目根目录解压，保留归档中的 `outputs/` 路径。浏览器里可切换原版、解码器微调版、边界细化版。车轮联合微调是离线实验。
+- **训练权重**：已训练的解码器权重放入 outputs/training/best.pt，边界细化权重放入 outputs/refinement-training/best.pt。也可以按下文的 DAVIS 训练流程生成这些文件。浏览器根据已存在的权重显示可选版本。车轮联合微调是离线实验。
 - **复现实验**：下载 [DAVIS 2017](https://davischallenge.org/davis2017/code.html#downloads) 到 `data/`，按下文解包并生成划分。用 `git clone https://github.com/davisvideochallenge/davis2017-evaluation.git vendor/davis2017-evaluation` 安装 J/F 指标，记录使用提交 `ac7c43fca936f9722837b7fbd337d284ba37004b`。
 
 ## 在线样例素材
