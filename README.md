@@ -4,9 +4,9 @@
 
 基于 SAM 2.1 Tiny 的本地图像与短视频交互分割。支持正负点、框和文字定位，视频关键帧修正，透明前景与二值掩膜导出，以及卡通和线稿风格化。
 
-[打开 GitHub Pages 在线演示](https://kinosakuraxuan.github.io/SAM-Studio/) · [实验记录](./experiments)
+[项目主页](https://kinosakuraxuan.github.io/SAM-Studio/) · [项目报告](./reports/智能计算系统期末项目报告.docx) · [训练权重](https://github.com/kinosakuraxuan/SAM-Studio/releases/tag/v1.0.0) · [实验记录](./experiments)
 
-在线页面使用预计算样例。上传本地媒体、重新分割或运行 Grounding DINO 和风格模型需要启动下面的 Python 应用。
+上传本地媒体、重新分割或运行 Grounding DINO 和风格模型需要启动下面的 Python 应用。
 
 ## 本地安装
 
@@ -32,11 +32,22 @@ curl.exe --fail --location 'https://dl.fbaipublicfiles.com/segment_anything_2/09
 - **训练权重**：已训练的解码器权重放入 outputs/training/best.pt，边界细化权重放入 outputs/refinement-training/best.pt。也可以按下文的 DAVIS 训练流程生成这些文件。浏览器根据已存在的权重显示可选版本。车轮联合微调是离线实验。
 - **复现实验**：下载 [DAVIS 2017](https://davischallenge.org/davis2017/code.html#downloads) 到 `data/`，按下文解包并生成划分。用 `git clone https://github.com/davisvideochallenge/davis2017-evaluation.git vendor/davis2017-evaluation` 安装 J/F 指标，记录使用提交 `ac7c43fca936f9722837b7fbd337d284ba37004b`。
 
-## 在线样例素材
+### 下载并安装训练权重
 
-演示使用 DAVIS 2017 的 `car-turn`、`tennis`，本地内置样例另有 `camel`。图像和视频仅用于非商业课程展示，修改包括裁剪、掩膜、风格化和格式转换。车轮对照使用 `bike-packing` 标注和项目预测，页面附有数据出处及许可。
+从 [v1.0.0 Release](https://github.com/kinosakuraxuan/SAM-Studio/releases/tag/v1.0.0) 下载所需 ZIP，解压到项目根目录。ZIP 已包含 outputs/ 路径。
 
-[DAVIS 2017](https://davischallenge.org/davis2017/code.html) · [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) · [DAVIS 标注条款](https://davischallenge.org/challenge2017/rulesdates.html) · [演示素材说明](./docs/credits.html)
+| 文件 | 内容 |
+| --- | --- |
+| [sam-studio-app-weights.zip](https://github.com/kinosakuraxuan/SAM-Studio/releases/download/v1.0.0/sam-studio-app-weights.zip) | 本地工作台使用的 DAVIS 全图解码器和边界细化权重 |
+| [sam-studio-experiment-weights.zip](https://github.com/kinosakuraxuan/SAM-Studio/releases/download/v1.0.0/sam-studio-experiment-weights.zip) | DIS5K 局部解码器、编码器末阶段联合微调、像素细化和 DAVIS 分辨率对照权重 |
+
+[SHA256SUMS.txt](https://github.com/kinosakuraxuan/SAM-Studio/releases/download/v1.0.0/SHA256SUMS.txt) 提供压缩包校验值，[weights-manifest.json](https://github.com/kinosakuraxuan/SAM-Studio/releases/download/v1.0.0/weights-manifest.json) 列出各模型路径与摘要。运行时还需官方 SAM 2.1 Tiny 基础权重，下载步骤见上方安装命令。第三方文字和风格模型由各自的安装脚本下载。
+
+## 样例素材
+
+项目实验使用 DAVIS 2017 的 `car-turn`、`tennis`，本地内置样例另有 `camel`。图像和视频仅用于非商业课程展示，修改包括裁剪、掩膜、风格化和格式转换。车轮对照使用 `bike-packing` 标注和项目预测，页面附有数据出处及许可。
+
+[DAVIS 2017](https://davischallenge.org/davis2017/code.html) · [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) · [DAVIS 标注条款](https://davischallenge.org/challenge2017/rulesdates.html) · [素材说明](./docs/credits.html)
 
 ---
 
