@@ -1,5 +1,7 @@
 # SAM Studio
 
+同济软件工程24级智能计算系统期末项目。
+
 基于 SAM 2.1 Tiny 的本地图像与短视频交互分割。支持正负点、框和文字定位，视频关键帧修正，透明前景与二值掩膜导出，以及卡通和线稿风格化。
 
 [打开 GitHub Pages 在线演示](https://kinosakuraxuan.github.io/SAM-Studio/) · [下载项目训练权重](https://github.com/kinosakuraxuan/SAM-Studio/releases/tag/v1.0.0) · [实验记录](./experiments)
