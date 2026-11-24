@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SAM Studio 课程项目演示，体验选区风格化、视频目标传播和细粒度分割实验。">
+  <title>SAM Studio · 影像编辑工作台</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./studio.js"></script>
+</head>
+<body>
+  <header class="mast">
+    <div class="wrap mast-inner">
+      <a class="brand" href="./"><span class="mark" aria-hidden="true"></span>SAM Studio</a>
+      <nav aria-label="项目链接">
+        <a href="https://github.com/kinosakuraxuan/SAM-Studio#本地安装">本地运行</a>
+        <a href="https://github.com/kinosakuraxuan/SAM-Studio">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <header class="hero">
+      <div>
+        <h1>图像与视频工作台</h1>
+        <p>用 SAM 2.1 跟踪同一个对象，提取掩膜，再给选区换一种风格。</p>
+      </div>
+      <p class="deployment">在线演示使用预计算样例。上传自己的图像或视频可运行<a href="https://github.com/kinosakuraxuan/SAM-Studio#本地安装">本地完整版</a>。</p>
+    </header>
+    <div class="workspace">
+      <nav class="scene-nav" aria-label="演示内容">
+        <button type="button" data-panel="image" aria-controls="image-panel" aria-pressed="true">图像风格</button>
+        <button type="button" data-panel="video" aria-controls="video-panel" aria-pressed="false">视频传播</button>
+        <button type="button" data-panel="experiment" aria-controls="experiment-panel" aria-pressed="false">实验结果</button>
+      </nav>
+
+      <section id="image-panel" class="layout" aria-label="图像风格对比">
+        <div class="stage-column">
+          <div class="compare" id="compare" style="--split:50%">
+            <img id="original" src="./assets/car-original.webp" alt="DAVIS 汽车示例的原图">
+            <img id="edited" src="./assets/car-cartoon.webp" alt="汽车卡通化结果">
+            <div class="divider" aria-hidden="true"><span>‹ ›</span></div>
+            <span class="view-label left">原图</span><span class="view-label right" id="view-label">卡通</span>
+            <label class="sr-only" for="split">调整原图与编辑结果的分界线</label>
+            <input id="split" type="range" min="0" max="100" value="50">
+          </div>
+          <p class="caption" id="image-caption" role="status">DAVIS · car-turn</p>
+        </div>
+        <aside class="controls">
+          <div class="control-group">
+            <h2>示例图像</h2>
+            <div class="choices" aria-label="选择图像">
+              <button type="button" data-subject="car" aria-pressed="true">汽车</button>
+              <button type="button" data-subject="person" aria-pressed="false">人物</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <h2>选区风格</h2>
+            <div class="choices" aria-label="选择风格">
+              <button type="button" data-style="cartoon" aria-pressed="true">卡通</button>
+              <button type="button" data-style="sketch" aria-pressed="false">线稿</button>
+            </div>
+          </div>
+          <p class="help">拖动分界线，观察目标轮廓和背景。</p>
+          <a class="action" id="image-download" href="./assets/car-cartoon.webp" download>下载编辑结果</a>
+        </aside>
+      </section>
+
+      <section id="video-panel" class="layout" aria-label="视频目标传播" hidden>
+        <div class="stage-column">
+          <video id="player" controls playsinline preload="metadata" poster="./assets/car-original.webp">
+            <source src="./assets/video-original.mp4" type="video/mp4">
+            浏览器无法播放此视频。
+          </video>
+          <p class="caption" id="video-caption" role="status">DAVIS · car-turn · 原片</p>
+        </div>
+        <aside class="controls">
+          <div class="control-group">
+            <h2>播放版本</h2>
+            <div class="choices video-choices" aria-label="选择视频版本">
+              <button type="button" data-video="original" aria-pressed="true">原片</button>
+              <button type="button" data-video="tracking" aria-pressed="false">传播掩膜</button>
+              <button type="button" data-video="cartoon" aria-pressed="false">卡通视频</button>
+              <button type="button" data-video="sketch" aria-pressed="false">线稿视频</button>
+            </div>
+          </div>
+          <p class="help">在汽车转弯的过程中，比较同一目标的分割和风格效果。</p>
+          <a class="action" id="video-download" href="./assets/video-original.mp4" download>下载当前视频</a>
+        </aside>
+      </section>
+
+      <section id="experiment-panel" class="experiment" aria-labelledby="experiment-title" hidden>
+        <h2 id="experiment-title">车轮内部的细结构</h2>
+        <p>相同紧框下的 B 区辐条对照。白色为前景，黑色为背景。</p>
+        <img class="wheel" src="./assets/wheel-comparison.webp" alt="同一车轮局部的 DAVIS 标注、局部重编码、微调解码器及编码器末阶段联合微调掩膜" loading="lazy">
+        <div class="metrics">
+          <div><span>单点平均 IoU</span><strong>0.553 → 0.775</strong><small>DAVIS 留出集 · 30 段视频、90 帧</small></div>
+          <div><span>B 区辐条覆盖率</span><strong>40.6% → 73.0%</strong><small>单个案例 · 局部解码器微调前后</small></div>
+          <div><span>整轮背景误填率</span><strong>36.3% → 47.9%</strong><small>单个案例 · 仅解码器与联合微调</small></div>
+        </div>
+        <a class="action" href="https://github.com/kinosakuraxuan/SAM-Studio/tree/main/experiments">查看实验记录 ↗</a>
+      </section>
+    </div>
+    <noscript><p>启用 JavaScript 后可切换示例与风格。</p></noscript>
+  </main>
+  <footer class="wrap footer">
+    <span>课程项目 · 非商业演示</span>
+    <span>素材及标注来自 <a href="https://davischallenge.org/davis2017/code.html">DAVIS 2017</a> · <a href="./credits.html">来源与许可</a></span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SAM Studio · 影像编辑工作台</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/style.css?v=4" />
+  </head>
+  <body>
+    <header class="mast">
+      <div class="shell mast-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span
+          ><span>SAM Studio</span>
+        </div>
+        <div class="device">
+          <i aria-hidden="true"></i><span id="hardware">正在检测设备</span>
+        </div>
+      </div>
+    </header>
+    <main class="shell">
+      <div class="intro">
+        <div>
+          <h1>图像与视频工作台</h1>
+          <p>圈出想编辑的对象，提取透明前景，或换成卡通与线稿。</p>
+        </div>
+        <div class="open-actions">
+          <label class="open"
+            >打开图片<input id="file" type="file" accept="image/*"
+          /></label>
+          <label
+            class="open open-secondary"
+            title="MP4、MOV、AVI、MKV、WebM、M4V"
+            >打开视频<input
+              id="video-file"
+              type="file"
+              accept=".mp4,.mov,.avi,.mkv,.webm,.m4v"
+          /></label>
+        </div>
+      </div>
+      <div class="layout">
+        <section class="workspace" aria-label="素材预览">
+          <div class="panel-heading">
+            <div class="media-info">
+              <h2 id="filename">素材预览</h2>
+              <span id="dimensions">前景提取示例</span>
+            </div>
+            <label id="view-control" hidden>
+              <select id="view" aria-label="画布显示方式">
+                <option value="fit">完整显示</option>
+                <option value="width">适合宽度</option>
+                <option value="height">适合高度</option>
+              </select>
+            </label>
+          </div>
+          <div id="video-toolbar" hidden>
+            <div class="video-modes" role="group" aria-label="视频查看方式">
+              <button type="button" id="edit-mode" aria-pressed="true">
+                逐帧编辑
+              </button>
+              <button type="button" id="play-mode" aria-pressed="false">
+                网页播放
+              </button>
+            </div>
+            <select id="playback-source" aria-label="播放内容" hidden>
+              <option value="original">原始视频</option>
+              <option id="playback-live" value="live" disabled hidden>
+                跟随选区
+              </option>
+              <option id="playback-overlay" value="tracked" disabled hidden>
+                跟踪预览
+              </option>
+              <option id="playback-styled" value="styled" disabled hidden>
+                风格视频
+              </option>
+            </select>
+          </div>
+          <div id="stage">
+            <div id="empty">
+              <div class="prints" aria-label="同一幅骆驼照片的原图及透明前景">
+                <figure class="print scene">
+                  <img src="/assets/camel.jpg" alt="围栏前的骆驼" />
+                  <figcaption>原图</figcaption>
+                </figure>
+                <figure class="print subject">
+                  <div class="checker">
+                    <img
+                      src="/assets/camel-cutout.webp"
+                      alt="提取出的骆驼前景"
+                    />
+                  </div>
+                  <figcaption>透明前景</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div id="surface" role="region" aria-label="素材画布">
+              <canvas id="canvas" aria-label="分割画布" hidden></canvas>
+            </div>
+            <video
+              id="preview-player"
+              aria-label="视频播放器"
+              controls
+              playsinline
+              preload="metadata"
+              hidden
+            ></video>
+            <canvas id="live-canvas" aria-label="选区跟随预览" hidden></canvas>
+          </div>
+          <div id="live-controls" hidden>
+            <button id="live-toggle" type="button">播放</button>
+            <input
+              id="live-position"
+              type="range"
+              min="0"
+              max="0"
+              value="0"
+              aria-label="跟随预览帧"
+              title="可回看已处理的帧"
+            />
+            <output id="live-count" for="live-position"></output>
+            <select id="live-effect" aria-label="跟随预览效果">
+              <option value="original">掩膜叠加</option>
+              <option value="neural-cartoon">卡通</option>
+              <option value="neural-sketch">速写</option>
+            </select>
+          </div>
+          <div id="timeline" hidden>
+            <label for="frame">视频帧</label>
+            <div class="frame-steps">
+              <button
+                type="button"
+                id="prev-frame"
+                aria-label="上一帧"
+                title="上一帧"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                id="next-frame"
+                aria-label="下一帧"
+                title="下一帧"
+              >
+                ›
+              </button>
+            </div>
+            <input type="range" id="frame" min="0" value="0" />
+            <output id="framenum" for="frame"></output>
+          </div>
+          <fieldset id="prompt-controls" hidden disabled>
+            <legend class="sr-only">画布选区工具</legend>
+            <div class="prompt-bar">
+              <div id="modes" role="group" aria-label="手动提示">
+                <button type="button" data-mode="pos" aria-pressed="true">
+                  <span class="icon point" aria-hidden="true">+</span>前景点
+                </button>
+                <button type="button" data-mode="neg" aria-pressed="false">
+                  <span class="icon point" aria-hidden="true">−</span>背景点
+                </button>
+                <button type="button" data-mode="box" aria-pressed="false">
+                  <span class="icon box" aria-hidden="true"></span>框选
+                </button>
+              </div>
+              <div class="edit-actions">
+                <button type="button" id="undo">撤销</button>
+                <button type="button" id="clear">清空本帧</button>
+              </div>
+            </div>
+          </fieldset>
+          <div class="caption">
+            <p id="status" role="status" aria-live="polite">
+              打开自己的素材，或选择内置示例。
+            </p>
+            <div id="examples">
+              <button
+                type="button"
+                id="examples-toggle"
+                aria-expanded="false"
+                aria-controls="example-options"
+              >
+                使用示例 <span aria-hidden="true">⌄</span>
+              </button>
+              <div id="example-options" hidden>
+                <button type="button" id="sample">
+                  示例图<span>骆驼 · 前景提取</span>
+                </button>
+                <button type="button" id="sample-video">
+                  示例视频<span>汽车转弯 · 10 秒</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <aside aria-label="编辑工具">
+          <fieldset id="controls" disabled>
+            <legend class="sr-only">编辑工具</legend>
+            <section class="tool-group">
+              <h2>文字选区</h2>
+              <label for="text">文字描述</label>
+              <div class="search">
+                <input
+                  id="text"
+                  placeholder="例如：自行车、red backpack"
+                /><button id="detect">查找</button>
+              </div>
+              <div id="choices"></div>
+            </section>
+            <section class="tool-group">
+              <h2>编辑设置</h2>
+              <div class="control-row">
+                <label for="version">模型权重</label
+                ><select id="version">
+                  <option value="original">SAM 2.1 Tiny · 原版</option>
+                  <option id="tuned" value="tuned" disabled>微调解码器</option>
+                  <option id="refined" value="refined" disabled>
+                    边界细化 · 实验版
+                  </option>
+                </select>
+              </div>
+              <div class="control-row">
+                <label for="style">选区风格</label
+                ><select id="style">
+                  <option value="original">原始 · 显示掩膜</option>
+                  <option value="neural-cartoon">卡通 · 神经网络</option>
+                  <option value="neural-sketch">速写 · 神经网络</option>
+                </select>
+              </div>
+              <div id="strength-controls" hidden>
+                <label for="strength"
+                  >风格强度
+                  <output id="strength-value" for="strength"
+                    >100%</output
+                  ></label
+                ><input
+                  id="strength"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="100"
+                />
+              </div>
+              <button class="primary" id="track" hidden>传播并导出视频</button
+              ><button id="style-video" hidden>生成风格视频</button>
+            </section>
+          </fieldset>
+          <section class="downloads">
+            <h2>提取结果</h2>
+            <div id="links">选中目标后，可在此保存结果。</div>
+          </section>
+        </aside>
+      </div>
+    </main>
+    <script type="module" src="/app.js?v=5"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+/.venv/
+/.runtime/
+/.install/
+/vendor/
+/models/
+/data/
+/outputs/
+/output/
+/.playwright-cli/
+__pycache__/
+*.py[cod]
+.env
+.env.*

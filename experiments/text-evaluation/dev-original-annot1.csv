@@ -1,0 +1,22 @@
+video,object,description,candidates,top_box_iou,mask_iou
+bmx-bumps,2,a man riding a bike,3,0.48578680860503476,0.5314034486696357
+bmx-bumps,1,a silver bmx bike,1,0.910435882408486,0.43296116041607025
+car-turn,1,a car taking a turn,1,0.8820119890258769,0.9398515818252832
+cat-girl,1,a baby girl holding a kitten,2,0.983238416095345,0.8503094192991293
+cat-girl,2,a kitten,1,0.9353135426038152,0.8694613757930091
+classic-car,3,a black vintage car,1,0.9263494147394966,0.9703287984505169
+classic-car,2,a man in a cap driving a car,3,0.004532641048805191,3.506393323827111e-05
+classic-car,1,a man in a car wearing a blue shirt,3,0.7633446777758734,0.7807545106615636
+dog-agility,1,a dog doing agility training,1,0.9549832117637893,0.9301707214035436
+dog-gooses,1,a black dog,1,0.9252647651371556,0.9205748865355522
+dog-gooses,2,a second goose from the right,2,0.008938097574375931,0.0
+dog-gooses,5,a goose at the end,2,0.8887251503163247,0.883480825958702
+dog-gooses,4,a third goose from the right,2,0.23285668565829173,0.0
+dog-gooses,3,a brown goose with a white neck,2,0.9072012412950657,0.9107438016528926
+drift-turn,1,a drift car on a racetrack,1,0.8780209599266401,0.9712363720714451
+rhino,1,a big rhinosaurus,1,0.96161953553722,0.974651846173502
+snowboard,1,a snowboard,1,0.8790592622825162,0.6767820339705778
+snowboard,2,a man snowboarding wearing a black jacket,1,0.9572814888675186,0.9307870156293351
+tuk-tuk,1,a girl on the left with black hair,2,0.9768290815584089,0.9475114866166969
+tuk-tuk,2,a girl on the right with curly hair,2,0.0,0.0
+tuk-tuk,3,a boy in a gray tshirt,1,0.9808390937372048,0.9803751337600194

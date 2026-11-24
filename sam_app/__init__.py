@@ -1,0 +1,1 @@
+"""Local interactive foreground extraction."""

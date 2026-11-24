@@ -1,0 +1,532 @@
+{
+  "case": "bike-packing-00000",
+  "roi": [
+    1114,
+    794,
+    1650,
+    1553
+  ],
+  "context": [
+    1050,
+    730,
+    1714,
+    1617
+  ],
+  "prompts": {
+    "point": [
+      [
+        [
+          1524.9505494505495,
+          1694.1645833333332
+        ]
+      ],
+      [
+        1
+      ],
+      null
+    ],
+    "box": [
+      [],
+      [],
+      [
+        1092.923076923077,
+        696.4375,
+        2046.5934065934066,
+        2021.7791666666667
+      ]
+    ]
+  },
+  "verified_step3_predictions": true,
+  "B3_rect": [
+    226,
+    455,
+    240,
+    476
+  ],
+  "scores": {
+    "point_decoder": {
+      "wheel": {
+        "fg": 255422,
+        "bg": 151402,
+        "tp": 245088,
+        "fp": 38955,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.8325650441440737,
+        "recall": 0.959541464713298,
+        "gap_fp": 0.25729514801653874,
+        "f2": 0.41943827590494615,
+        "corrected_background": 0,
+        "new_background_errors": 0
+      },
+      "tire": {
+        "fg": 1940,
+        "bg": 120,
+        "tp": 1919,
+        "fp": 12,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.983094262295082,
+        "recall": 0.9891752577319588,
+        "gap_fp": 0.1
+      },
+      "frame": {
+        "fg": 8993,
+        "bg": 0,
+        "tp": 8993,
+        "fp": 0,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 1.0,
+        "recall": 1.0,
+        "gap_fp": null
+      },
+      "A": {
+        "fg": 360,
+        "bg": 3780,
+        "tp": 269,
+        "fp": 382,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.36253369272237196,
+        "recall": 0.7472222222222222,
+        "gap_fp": 0.10105820105820106
+      },
+      "B": {
+        "fg": 982,
+        "bg": 6029,
+        "tp": 698,
+        "fp": 570,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.4497422680412371,
+        "recall": 0.7107942973523421,
+        "gap_fp": 0.09454304196384143
+      },
+      "B3": {
+        "fg": 65,
+        "bg": 229,
+        "tp": 14,
+        "fp": 26,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.15384615384615385,
+        "recall": 0.2153846153846154,
+        "gap_fp": 0.11353711790393013,
+        "rows_hit": 9
+      }
+    },
+    "box_decoder": {
+      "wheel": {
+        "fg": 255422,
+        "bg": 151402,
+        "tp": 246218,
+        "fp": 55014,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.7931361053486065,
+        "recall": 0.9639655158913485,
+        "gap_fp": 0.36336376005600984,
+        "f2": 0.4432669454344119,
+        "corrected_background": 0,
+        "new_background_errors": 0
+      },
+      "tire": {
+        "fg": 1940,
+        "bg": 120,
+        "tp": 1918,
+        "fp": 9,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.9840944073884043,
+        "recall": 0.988659793814433,
+        "gap_fp": 0.075
+      },
+      "frame": {
+        "fg": 8993,
+        "bg": 0,
+        "tp": 8993,
+        "fp": 0,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 1.0,
+        "recall": 1.0,
+        "gap_fp": null
+      },
+      "A": {
+        "fg": 360,
+        "bg": 3780,
+        "tp": 277,
+        "fp": 434,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.34886649874055414,
+        "recall": 0.7694444444444445,
+        "gap_fp": 0.11481481481481481
+      },
+      "B": {
+        "fg": 982,
+        "bg": 6029,
+        "tp": 717,
+        "fp": 633,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.4439628482972136,
+        "recall": 0.730142566191446,
+        "gap_fp": 0.10499253607563443
+      },
+      "B3": {
+        "fg": 65,
+        "bg": 229,
+        "tp": 17,
+        "fp": 31,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 0.17708333333333334,
+        "recall": 0.26153846153846155,
+        "gap_fp": 0.13537117903930132,
+        "rows_hit": 11
+      }
+    },
+    "point_joint": {
+      "wheel": {
+        "fg": 255422,
+        "bg": 151402,
+        "tp": 250191,
+        "fp": 68072,
+        "recovered": 5248,
+        "newly_lost": 145,
+        "iou": 0.773402288759606,
+        "recall": 0.9795201666262108,
+        "gap_fp": 0.4496109694720017,
+        "f2": 0.5480417733981011,
+        "corrected_background": 414,
+        "new_background_errors": 29531
+      },
+      "tire": {
+        "fg": 1940,
+        "bg": 120,
+        "tp": 1930,
+        "fp": 25,
+        "recovered": 11,
+        "newly_lost": 0,
+        "iou": 0.9821882951653944,
+        "recall": 0.9948453608247423,
+        "gap_fp": 0.20833333333333334
+      },
+      "frame": {
+        "fg": 8993,
+        "bg": 0,
+        "tp": 8993,
+        "fp": 0,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 1.0,
+        "recall": 1.0,
+        "gap_fp": null
+      },
+      "A": {
+        "fg": 360,
+        "bg": 3780,
+        "tp": 295,
+        "fp": 661,
+        "recovered": 36,
+        "newly_lost": 10,
+        "iou": 0.2889324191968658,
+        "recall": 0.8194444444444444,
+        "gap_fp": 0.17486772486772487
+      },
+      "B": {
+        "fg": 982,
+        "bg": 6029,
+        "tp": 674,
+        "fp": 477,
+        "recovered": 9,
+        "newly_lost": 33,
+        "iou": 0.46196024674434544,
+        "recall": 0.6863543788187373,
+        "gap_fp": 0.07911759827500414
+      },
+      "B3": {
+        "fg": 65,
+        "bg": 229,
+        "tp": 13,
+        "fp": 22,
+        "recovered": 1,
+        "newly_lost": 2,
+        "iou": 0.14942528735632185,
+        "recall": 0.2,
+        "gap_fp": 0.09606986899563319,
+        "rows_hit": 7
+      }
+    },
+    "box_joint": {
+      "wheel": {
+        "fg": 255422,
+        "bg": 151402,
+        "tp": 250892,
+        "fp": 72466,
+        "recovered": 4795,
+        "newly_lost": 121,
+        "iou": 0.7651759137266384,
+        "recall": 0.9822646443924172,
+        "gap_fp": 0.47863304315662936,
+        "f2": 0.5738909493631789,
+        "corrected_background": 584,
+        "new_background_errors": 18036
+      },
+      "tire": {
+        "fg": 1940,
+        "bg": 120,
+        "tp": 1930,
+        "fp": 27,
+        "recovered": 12,
+        "newly_lost": 0,
+        "iou": 0.9811896288764617,
+        "recall": 0.9948453608247423,
+        "gap_fp": 0.225
+      },
+      "frame": {
+        "fg": 8993,
+        "bg": 0,
+        "tp": 8993,
+        "fp": 0,
+        "recovered": 0,
+        "newly_lost": 0,
+        "iou": 1.0,
+        "recall": 1.0,
+        "gap_fp": null
+      },
+      "A": {
+        "fg": 360,
+        "bg": 3780,
+        "tp": 304,
+        "fp": 665,
+        "recovered": 35,
+        "newly_lost": 8,
+        "iou": 0.2965853658536585,
+        "recall": 0.8444444444444444,
+        "gap_fp": 0.17592592592592593
+      },
+      "B": {
+        "fg": 982,
+        "bg": 6029,
+        "tp": 712,
+        "fp": 546,
+        "recovered": 19,
+        "newly_lost": 24,
+        "iou": 0.46596858638743455,
+        "recall": 0.725050916496945,
+        "gap_fp": 0.090562282302206
+      },
+      "B3": {
+        "fg": 65,
+        "bg": 229,
+        "tp": 17,
+        "fp": 29,
+        "recovered": 2,
+        "newly_lost": 2,
+        "iou": 0.18085106382978725,
+        "recall": 0.26153846153846155,
+        "gap_fp": 0.12663755458515283,
+        "rows_hit": 9
+      }
+    }
+  },
+  "transects": {
+    "A": {
+      "rect": [
+        138,
+        225,
+        253,
+        261
+      ],
+      "cut_y": 240,
+      "foreground_runs": [
+        [
+          154,
+          157
+        ],
+        [
+          193,
+          197
+        ],
+        [
+          239,
+          242
+        ]
+      ],
+      "interior_gap_runs": [
+        [
+          157,
+          193
+        ],
+        [
+          197,
+          239
+        ]
+      ],
+      "fg_pixels": 360,
+      "bg_pixels": 3780,
+      "scores": {
+        "point_decoder": {
+          "spoke_tp": 269,
+          "gap_fp": 382,
+          "fg_run_hit_pixels": [
+            3,
+            3,
+            3
+          ],
+          "gap_run_fp_pixels": [
+            2,
+            3
+          ]
+        },
+        "box_decoder": {
+          "spoke_tp": 277,
+          "gap_fp": 434,
+          "fg_run_hit_pixels": [
+            3,
+            3,
+            3
+          ],
+          "gap_run_fp_pixels": [
+            2,
+            4
+          ]
+        },
+        "point_joint": {
+          "spoke_tp": 295,
+          "gap_fp": 661,
+          "fg_run_hit_pixels": [
+            3,
+            3,
+            3
+          ],
+          "gap_run_fp_pixels": [
+            2,
+            5
+          ]
+        },
+        "box_joint": {
+          "spoke_tp": 304,
+          "gap_fp": 665,
+          "fg_run_hit_pixels": [
+            3,
+            3,
+            3
+          ],
+          "gap_run_fp_pixels": [
+            2,
+            5
+          ]
+        }
+      }
+    },
+    "B": {
+      "rect": [
+        160,
+        442,
+        283,
+        499
+      ],
+      "cut_y": 465,
+      "foreground_runs": [
+        [
+          167,
+          170
+        ],
+        [
+          183,
+          188
+        ],
+        [
+          232,
+          235
+        ],
+        [
+          255,
+          259
+        ]
+      ],
+      "interior_gap_runs": [
+        [
+          170,
+          183
+        ],
+        [
+          188,
+          232
+        ],
+        [
+          235,
+          255
+        ]
+      ],
+      "fg_pixels": 982,
+      "bg_pixels": 6029,
+      "scores": {
+        "point_decoder": {
+          "spoke_tp": 698,
+          "gap_fp": 570,
+          "fg_run_hit_pixels": [
+            3,
+            5,
+            0,
+            4
+          ],
+          "gap_run_fp_pixels": [
+            3,
+            3,
+            0
+          ]
+        },
+        "box_decoder": {
+          "spoke_tp": 717,
+          "gap_fp": 633,
+          "fg_run_hit_pixels": [
+            3,
+            5,
+            0,
+            4
+          ],
+          "gap_run_fp_pixels": [
+            3,
+            3,
+            0
+          ]
+        },
+        "point_joint": {
+          "spoke_tp": 674,
+          "gap_fp": 477,
+          "fg_run_hit_pixels": [
+            3,
+            5,
+            0,
+            4
+          ],
+          "gap_run_fp_pixels": [
+            3,
+            2,
+            0
+          ]
+        },
+        "box_joint": {
+          "spoke_tp": 712,
+          "gap_fp": 546,
+          "fg_run_hit_pixels": [
+            3,
+            5,
+            0,
+            4
+          ],
+          "gap_run_fp_pixels": [
+            3,
+            3,
+            0
+          ]
+        }
+      }
+    }
+  }
+}
